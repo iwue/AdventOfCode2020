@@ -26,16 +26,16 @@ using Passports = std::vector<Passport>;
 void splitLineToKeyValues(Passport & passport, std::string line){
 	std::istringstream iline(line);
 	std::string word, key, value;
+
 	while (!iline.eof()){
 		iline >> word;
 		key = word.substr(0, word.find(":"));
 		value = word.substr(word.find(":") + 1, word.length());
-
 		passport.insert(std::pair<string, string>(key, value));
 	}
 }
 
-void splitPassports(Passports & p, std::istream & io) {
+void convertToPassports(Passports & p, std::istream & io) {
 	io >> std::noskipws;
 
 	std::string line{};
@@ -44,7 +44,7 @@ void splitPassports(Passports & p, std::istream & io) {
 	if(p.size() == 0) p.push_back(Passport());
 	while(!io.eof()){
 		std::getline(io, line);
-		if(line.compare("") == 0){
+		if(line.empty()){
 			p.push_back(Passport());
 			curPassport++;
 			continue;
@@ -54,10 +54,23 @@ void splitPassports(Passports & p, std::istream & io) {
 }
 
 bool passportValidate(Passport & p){
-	vector<string> const requiredFields {"byr","iyr","eyr", "hgt","hcl", "ecl","pid"};
+	std::map<string,string> const requiredFields {
+		{"byr", "^(19[2-9][0-9]|200[0-2])$"},
+		{"iyr", "^(201[0-9]|2020)$"},
+		{"eyr", "^20[2-3][0-9]$"},
+		{"hgt", "^((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)$"},
+		{"hcl", "^#[0-9a-fA-F]{6}$"},
+		{"ecl", "^(amb|blu|brn|gry|grn|hzl|oth)$"},
+		{"pid", "^[0-9]{9}$"}
+	};
 
-	for(string field : requiredFields){
-		if(p.find(field) == end(p)) return false;
+	if(p.size() < 7) return false;
+
+	for (pair<string, string> const field : requiredFields) {
+		auto attribute = p.find(field.first);
+
+		if(attribute == end(p)) return false;
+		if(!std::regex_match (attribute->second, std::regex(field.second) )) return false;
 	}
 
 	return true;
@@ -73,7 +86,7 @@ int main() {
 
 	Passports p{};
 	if(file){
-		splitPassports(p, file);
+		convertToPassports(p, file);
 
 		std::for_each(begin(p), end(p), [&count](Passport passport){
 
