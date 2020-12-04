@@ -40,7 +40,6 @@ int main() {
 	if(file){
 
 		while (!file.eof()) {
-
 			std::getline(file, line);
 			vec.push_back(line);
 		}
