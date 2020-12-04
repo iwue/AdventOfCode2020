@@ -23,8 +23,6 @@ using Passport = std::map<string, string>;
 
 using Passports = std::vector<Passport>;
 
-
-
 void splitLineToKeyValues(Passport & passport, std::string line){
 	std::istringstream iline(line);
 	std::string word, key, value;
@@ -55,54 +53,27 @@ void splitPassports(Passports & p, std::istream & io) {
 	}
 }
 
-bool validateHexcolor(string value){
-	return std::regex_match (value, std::regex("^#[0-9a-fA-F]{6}$"));
-}
-
-bool validateEyeColor(string value){
-	string regex {"^(amb|blu|brn|gry|grn|hzl|oth)$"};
-
-	return std::regex_match (value, std::regex(regex));
-}
-
-bool validateId(string value ){
-	return std::regex_match (value, std::regex("^0*[0-9]+$")) && value.size() == 9;
-}
-
-bool validateNum(string value, int bottom, int upper){
-	int n = std::stoi(value);
-	return n >= bottom && n <= upper;
-}
-
-bool validateHgt(string value, int bottomCm, int upperCm, int bottomIn, int upperIn){
-	return std::regex_match (value, std::regex("^((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)$"));
-}
-
-bool ValidateValue(Passport & p){
-	for(pair<string, string> v : p){
-		cout << v.first << " : " << v.second << std::endl;
-	}
-
-	if(!validateNum(p.find("byr")->second, 1920, 2002)) return false;
-	if(!validateNum(p.find("iyr")->second, 2010, 2020)) return false;
-	if(!validateNum(p.find("eyr")->second, 2020, 2030)) return false;
-	if(!validateHgt(p.find("hgt")->second, 150, 193, 56, 76)) return false;
-	if(!validateHexcolor(p.find("hcl")->second)) return false;
-	if(!validateEyeColor(p.find("ecl")->second)) return false;
-	if(!validateId(p.find("pid")->second)) return false;
-	return true;
-}
-
 bool passportValidate(Passport & p){
-	std::vector<string> const required { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" };
+	std::map<string,string> const required {
+		{"byr", "^(19[2-9][0-9]|200[0-2])$"},
+		{"iyr", "^(201[0-9]|2020)$"},
+		{"eyr", "^20[2-3][0-9]$"},
+		{"hgt", "^((1[5-8][0-9]|19[0-3])cm|(59|6[0-9]|7[0-6])in)$"},
+		{"hcl", "^#[0-9a-fA-F]{6}$"},
+		{"ecl", "^(amb|blu|brn|gry|grn|hzl|oth)$"},
+		{"pid", "^[0-9]{9}$"}
+	};
 
-	std::vector<string> const optional { "cid" };
+	if(p.size() < 7) return false;
 
-	for(string field : required){
-		if(p.find(field) == end(p)) return false;
+	for (pair<string, string> const field : required) {
+		auto attribute = p.find(field.first);
+
+		if(attribute == end(p)) return false;
+		if(!std::regex_match (attribute->second, std::regex(field.second) )) return false;
 	}
 
-	return ValidateValue(p);
+	return true;
 }
 
 int main() {
