@@ -5,7 +5,7 @@
 			<provider copy-of="extension" id="org.eclipse.cdt.ui.UserLanguageSettingsProvider"/>
 			<provider-reference id="org.eclipse.cdt.core.ReferencedProjectsLanguageSettingsProvider" ref="shared-provider"/>
 			<provider-reference id="org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider" ref="shared-provider"/>
-			<provider class="org.eclipse.cdt.managedbuilder.internal.language.settings.providers.GCCBuiltinSpecsDetectorMinGW" console="false" env-hash="347594348139578312" id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW" keep-relative-paths="false" name="CDT GCC Built-in Compiler Settings MinGW" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot; -std=c++1z" prefer-non-shared="true" store-entries-with-project="true">
+			<provider class="org.eclipse.cdt.managedbuilder.internal.language.settings.providers.GCCBuiltinSpecsDetectorMinGW" console="false" env-hash="-1129791565449145368" id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW" keep-relative-paths="false" name="CDT GCC Built-in Compiler Settings MinGW" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot; -std=c++1z" prefer-non-shared="true" store-entries-with-project="true">
 				<language-scope id="org.eclipse.cdt.core.gcc"/>
 				<language-scope id="org.eclipse.cdt.core.g++"/>
 				<language id="org.eclipse.cdt.core.gcc">
@@ -2270,7 +2270,7 @@
 			<provider copy-of="extension" id="org.eclipse.cdt.ui.UserLanguageSettingsProvider"/>
 			<provider-reference id="org.eclipse.cdt.core.ReferencedProjectsLanguageSettingsProvider" ref="shared-provider"/>
 			<provider-reference id="org.eclipse.cdt.managedbuilder.core.MBSLanguageSettingsProvider" ref="shared-provider"/>
-			<provider class="org.eclipse.cdt.managedbuilder.internal.language.settings.providers.GCCBuiltinSpecsDetectorMinGW" console="false" env-hash="347594348139578312" id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW" keep-relative-paths="false" name="CDT GCC Built-in Compiler Settings MinGW" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot; -std=c++1z" prefer-non-shared="true" store-entries-with-project="true">
+			<provider class="org.eclipse.cdt.managedbuilder.internal.language.settings.providers.GCCBuiltinSpecsDetectorMinGW" console="false" env-hash="-1129791565449145368" id="org.eclipse.cdt.managedbuilder.core.GCCBuiltinSpecsDetectorMinGW" keep-relative-paths="false" name="CDT GCC Built-in Compiler Settings MinGW" parameter="${COMMAND} ${FLAGS} -E -P -v -dD &quot;${INPUTS}&quot; -std=c++1z" prefer-non-shared="true" store-entries-with-project="true">
 				<language-scope id="org.eclipse.cdt.core.gcc"/>
 				<language-scope id="org.eclipse.cdt.core.g++"/>
 				<language id="org.eclipse.cdt.core.gcc">
@@ -3539,7 +3539,7 @@
 					<entry kind="macro" name="__FLT128_MAX_EXP__" value="16384">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__FLT128_MAX__" value="1.18973149535723176508575932662800702e+4932F128">
+					<entry kind="macro" name="__FLT128_MIN_10_EXP__" value="2">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__FLT128_MIN_10_EXP__" value="(-4931)">
@@ -3713,6 +3713,9 @@
 					<entry kind="macro" name="__FLT64_MIN_10_EXP__" value="(-307)">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
+					<entry kind="macro" name="__FLT64_MIN_EXP__" value="16">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
 					<entry kind="macro" name="__FLT64_MIN_EXP__" value="(-1021)">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -3734,6 +3737,9 @@
 					<entry kind="macro" name="__FLT_EVAL_METHOD_TS_18661_3__" value="2">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
+					<entry kind="macro" name="__FLT_EVAL_METHOD__" value="201611">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
 					<entry kind="macro" name="__FLT_EVAL_METHOD__" value="2">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -3749,10 +3755,16 @@
 					<entry kind="macro" name="__FLT_MANT_DIG__" value="24">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
+					<entry kind="macro" name="__FLT_MAX_10_EXP__" value="0x7fffffffL">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
 					<entry kind="macro" name="__FLT_MAX_10_EXP__" value="38">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__FLT_MAX_EXP__" value="128">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
+					<entry kind="macro" name="__FLT_MAX__" value="0xffff">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__FLT_MAX__" value="3.40282346638528859811704183484516925e+38F">
@@ -3821,9 +3833,6 @@
 					<entry kind="macro" name="__GCC_HAVE_SYNC_COMPARE_AND_SWAP_8" value="1">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__GCC_IEC_559" value="2">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
 					<entry kind="macro" name="__GCC_IEC_559_COMPLEX" value="2">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -3846,6 +3855,9 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__GXX_EXPERIMENTAL_CXX0X__" value="1">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
+					<entry kind="macro" name="__GXX_MERGED_TYPEINFO_NAMES" value="1.18973149535723176508575932662800702e+4932F128">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__GXX_MERGED_TYPEINFO_NAMES" value="0">
@@ -3926,9 +3938,6 @@
 					<entry kind="macro" name="__INT_FAST16_TYPE__" value="short int">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__INT_FAST16_WIDTH__" value="16">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
 					<entry kind="macro" name="__INT_FAST32_MAX__" value="0x7fffffff">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -3968,16 +3977,10 @@
 					<entry kind="macro" name="__INT_LEAST32_MAX__" value="0x7fffffff">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__INT_LEAST32_TYPE__" value="int">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
 					<entry kind="macro" name="__INT_LEAST32_WIDTH__" value="32">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__INT_LEAST64_MAX__" value="0x7fffffffffffffffLL">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
-					<entry kind="macro" name="__INT_LEAST64_TYPE__" value="long long int">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__INT_LEAST64_WIDTH__" value="64">
@@ -4001,9 +4004,6 @@
 					<entry kind="macro" name="__LDBL_DECIMAL_DIG__" value="21">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__LDBL_DENORM_MIN__" value="3.64519953188247460252840593361941982e-4951L">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
 					<entry kind="macro" name="__LDBL_DIG__" value="18">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -4023,6 +4023,9 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__LDBL_MAX_10_EXP__" value="4932">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
+					<entry kind="macro" name="__LDBL_MAX_EXP__" value="0xffffffffU">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__LDBL_MAX_EXP__" value="16384">
@@ -4046,9 +4049,6 @@
 					<entry kind="macro" name="__LONG_LONG_WIDTH__" value="64">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__LONG_MAX__" value="0x7fffffffL">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
 					<entry kind="macro" name="__LONG_WIDTH__" value="32">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -4056,6 +4056,9 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__MSVCRT__" value="1">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
+					<entry kind="macro" name="__NO_INLINE__" value="3.64519953188247460252840593361941982e-4951L">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__NO_INLINE__" value="1">
@@ -4166,6 +4169,9 @@
 					<entry kind="macro" name="__SIZE_WIDTH__" value="32">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
+					<entry kind="macro" name="__STDCPP_DEFAULT_NEW_ALIGNMENT__" value="long long int">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
 					<entry kind="macro" name="__STDCPP_DEFAULT_NEW_ALIGNMENT__" value="16">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -4194,9 +4200,6 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__UINT32_C(c)" value="c ## U">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
-					<entry kind="macro" name="__UINT32_MAX__" value="0xffffffffU">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__UINT32_TYPE__" value="unsigned int">
@@ -4236,9 +4239,6 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__UINT_FAST16_MAX__" value="0xffff">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
-					<entry kind="macro" name="__UINT_FAST16_TYPE__" value="short unsigned int">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__UINT_FAST32_MAX__" value="0xffffffffU">
@@ -4289,7 +4289,7 @@
 					<entry kind="macro" name="__VERSION__" value="&quot;9.2.0&quot;">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__WCHAR_MAX__" value="0xffff">
+					<entry kind="macro" name="__WCHAR_MAX__" value="short unsigned int">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__WCHAR_MIN__" value="0">
@@ -4344,6 +4344,9 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__cpp_alias_templates" value="200704">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
+					<entry kind="macro" name="__cpp_aligned_new" value="int">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__cpp_aligned_new" value="201606">
@@ -4464,9 +4467,6 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__cpp_template_auto" value="201606">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
-					<entry kind="macro" name="__cpp_template_template_args" value="201611">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__cpp_threadsafe_static_init" value="200806">
