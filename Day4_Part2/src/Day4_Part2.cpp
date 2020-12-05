@@ -17,6 +17,7 @@
 #include <map>
 #include <utility>
 #include <regex>
+#include <chrono>
 
 using namespace std;
 using Passport = std::map<string, string>;
@@ -77,6 +78,7 @@ bool passportValidate(Passport & p){
 }
 
 int main() {
+	auto start = chrono::high_resolution_clock::now();
 	std::ifstream file;
 	file.open("input.txt");
 	string line;
@@ -95,6 +97,7 @@ int main() {
 			}
 		});
 	}
+	auto stop = high_resolution_clock::now();
 
 	std::cout << "Matches found: " << count << std::endl;
 }
